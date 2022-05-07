@@ -6,28 +6,40 @@
           <i class="fa-solid fa-plus addBtn"></i>
           <!-- <font-awesome-icon icon="fa-solid fa-plus" class="addBtn"/>  -->
       </span>
+
+      <AlertModal v-if="showModal" @close="showModal = false">
+        <template v-slot:header>custom header</template>
+      </AlertModal>
+
   </div>
 </template>
 
 <script>
+import AlertModal from './common/Modal.vue'
+
 export default {
     data: function(){
         return{
-            newTodoItem: ""
+            newTodoItem: "",
+            showModal: false
         }
     },
     methods: {
         addTodo: function(){
             if(this.newTodoItem !== ''){
-                var obj = {completed: false, item: this.newTodoItem};
-                localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+                this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();
+            } else {
+                this.showModal = !this.showModal;
             }
         },
         clearInput: function(){
             this.newTodoItem = '';
         }
     },
+    components: {
+        AlertModal: AlertModal
+    }
 }
 </script>
 
