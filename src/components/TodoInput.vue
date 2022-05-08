@@ -8,14 +8,19 @@
       </span>
 
       <AlertModal v-if="showModal" @close="showModal = false">
-        <template v-slot:header>custom header</template>
+        <template v-slot:header>경고!  
+        </template>
+        
+        <template v-slot:body>아무것도 입력하지 않으셨습니다.   <i class="closeModalBtn fas fa-times" v-on:click="showModal = false"></i> 
+            <button class="modal-default-button" @click="showModal = false">OK</button>
+        </template>
       </AlertModal>
 
   </div>
 </template>
 
 <script>
-import AlertModal from './common/Modal.vue'
+import AlertModal from './common/AlertModal.vue'
 
 export default {
     data: function(){
@@ -67,5 +72,8 @@ input:focus {
 .addBtn {
     color: white;
     vertical-align: middle;
+}
+.closeModalBtn {
+    color: #42b983;
 }
 </style>
