@@ -15,18 +15,18 @@ import TodoFooter from './components/TodoFooter.vue'
 import TodoInput from './components/TodoInput.vue'
 
 export default {
-  data: function() {
+  data() {
     return {
       todoItems: []
     }
   },
   methods: {
-    addOneItem: function(todoItem) {
+    addOneItem(todoItem) {
       const obj = {completed: false, item: todoItem};
       localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
-    removeOneItems: function(todoItem, index){
+    removeOneItems(todoItem, index){
       localStorage.removeItem(todoItem.item);
       this.todoItems.splice(index, 1);
     },
@@ -41,7 +41,7 @@ export default {
       this.todoItems = [];
     }
   },
-  created: function(){
+  created(){
         if(localStorage.length > 0){
             for(let i = 0; i < localStorage.length ; i++){
                 if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
