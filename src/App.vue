@@ -51,10 +51,10 @@ export default {
         }
     },
   components: {
-    'TodoHeader' : TodoHeader,
-    'TodoList' : TodoList,
-    'TodoFooter' : TodoFooter,
-    'TodoInput' : TodoInput
+    TodoHeader,
+    TodoList,
+    TodoFooter,
+    TodoInput
   }
 }
 </script>
